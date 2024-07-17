@@ -36,3 +36,8 @@ entry("getpid");
 entry("sbrk");
 entry("sleep");
 entry("uptime");
+
+#added
+entry("getprocs");
+entry("memTest");
+# entry("addproc");

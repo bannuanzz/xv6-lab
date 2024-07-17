@@ -584,7 +584,7 @@ wakeup(void *chan)
   }
 }
 
-// Kill the process with the given pid.
+// the process with the given pid.
 // The victim won't exit until it tries to return
 // to user space (see usertrap() in trap.c).
 int
@@ -686,3 +686,43 @@ procdump(void)
     printf("\n");
   }
 }
+
+
+
+//added
+int getprocs(void){
+  struct proc *p;
+  int cnt=NPROC;
+  for(p=proc;p<&proc[NPROC];p++){
+    acquire(&p->lock);
+    if(p->state==UNUSED){
+      cnt--;
+    }
+    release(&p->lock);
+  }
+  return cnt;
+}
+
+
+// void addproc(void) {
+//   struct proc *p;
+
+//   for (p = proc; p < &proc[NPROC]; p++) {
+//     acquire(&p->lock);
+//     if (p->state == UNUSED) {
+//       printf("222222\n");
+//       p->state = USED;
+//       p->pid = nextpid++;
+//       // 在这里可以添加更多的初始化代码
+      
+//       printf("3333\n");
+//       p->state = RUNNABLE;
+//       printf("44444\n");
+//       release(&p->lock);
+//       printf("55555\n");
+//       return;
+//     }
+//     release(&p->lock);
+//   }
+// }
+

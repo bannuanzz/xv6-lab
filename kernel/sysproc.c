@@ -91,3 +91,18 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+//added
+int sys_getprocs(){
+
+  return getprocs();
+}
+
+void sys_memTest(){
+  return memTest();
+}
+
+// void sys_addproc(){
+//    addproc();
+//    return;
+// }

@@ -101,6 +101,11 @@ extern uint64 sys_unlink(void);
 extern uint64 sys_link(void);
 extern uint64 sys_mkdir(void);
 extern uint64 sys_close(void);
+//added
+extern uint64 sys_getprocs(void);
+extern uint64 sys_memTest(void);
+// extern uint64 sys_addproc(void);
+
 
 // An array mapping syscall numbers from syscall.h
 // to the function that handles the system call.
@@ -126,6 +131,10 @@ static uint64 (*syscalls[])(void) = {
 [SYS_link]    sys_link,
 [SYS_mkdir]   sys_mkdir,
 [SYS_close]   sys_close,
+//added
+[SYS_getprocs] sys_getprocs,
+[SYS_memTest] sys_memTest,
+// [SYS_addproc] sys_addproc,
 };
 
 void
@@ -145,3 +154,5 @@ syscall(void)
     p->trapframe->a0 = -1;
   }
 }
+
+
